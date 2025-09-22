@@ -9,7 +9,7 @@ fuelTypes = len(csvFile['fuel_type'].unique())
 missingValues = csvFile.isna().any().sum()
 maxEficiencyFuelAsia = (csvFile[csvFile['origin'] == 'Asia'])['fuel_efficiency_mpg'].max()
 medianHorsepower = csvFile['horsepower'].median()
-modeHorsepower = csvFile['horsepower'].value_counts().idxmax()
+modeHorsepower = csvFile['horsepower'].mode()
 newMedianHorsepower = (csvFile['horsepower'].fillna(value=modeHorsepower)).median()
 if medianHorsepower < newMedianHorsepower:
     change=("Yes, it increased")
@@ -46,7 +46,7 @@ Q6. Median value of horsepower
    1. Find the median value of horsepower column in the dataset. {}
    2. Next, calculate the most frequent value of the same horsepower column. {}
    3. Use fillna method to fill the missing values in horsepower column with the most frequent value from the previous step.
-   4. Now, calculate the median value of horsepower once again. {} ({})""".format(medianHorsepower, modeHorsepower, change, newMedianHorsepower))
+   4. Now, calculate the median value of horsepower once again. {} ({})""".format(medianHorsepower, modeHorsepower[0], change, newMedianHorsepower))
 print("""
 Q7. Sum of weights
    Select all the cars from Asia
